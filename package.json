@@ -7,10 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,scss}\"",
-    "prepare": "husky install"
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,scss,json}\"",
+    "prepare": "husky install",
+    "test": "jest"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
     "client-only": "^0.0.1",
     "next": "15.3.5",
     "react": "^19.0.0",
@@ -26,7 +30,10 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
     "husky": "^9.1.7",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
     "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
