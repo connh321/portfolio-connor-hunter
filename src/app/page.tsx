@@ -1,12 +1,21 @@
-import Header from "@/src/components/header/header";
-import Home from "@/src/components/home/home";
-import ClientProviders from "@/src/providers/client-providers";
+import Header from "@/src/components/client/header/header";
+import About from "@/src/components/server/about/about";
+import { Box, Stack } from "@mui/material";
+import "./page.scss";
+// import Projects from "../components/server/projects/projects";
+// import Resume from "../components/server/resume/resume";
+// import ContactMe from "../components/server/contact-me/contact-me";
 
 export default function Page() {
   return (
-    <ClientProviders>
+    <Box className="home">
       <Header />
-      <Home />
-    </ClientProviders>
+      <Stack spacing={4} className="content">
+        <About />
+        {/* <Projects />
+        <Resume />
+        <ContactMe /> */}
+      </Stack>
+    </Box>
   );
 }

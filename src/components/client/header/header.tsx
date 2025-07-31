@@ -12,7 +12,7 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./header.scss";
 
-const NAV_ITEMS = ["Home", "Projects", "Resume", "Contact Me"];
+const NAV_ITEMS = ["About", "Projects", "Resume", "Contact Me"];
 
 const Header = () => {
   const [expanded, setExpanded] = useState(true);
@@ -60,7 +60,7 @@ const Header = () => {
           spacing={2}
           justifyContent="center"
           alignItems="center"
-          flexWrap="wrap"
+          className="nav-buttons"
         >
           {NAV_ITEMS.map((label) => (
             <Button
@@ -81,7 +81,6 @@ const Header = () => {
         <KeyboardArrowDownIcon
           fontSize="large"
           className="arrow-icon animated"
-          sx={{ cursor: "pointer" }}
           onClick={() => window.scrollTo({ top: 2, behavior: "smooth" })}
         />
       )}

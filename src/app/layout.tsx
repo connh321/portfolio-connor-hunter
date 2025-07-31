@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/sass/globals.scss";
 import Head from "next/head";
+import RootProvider from "../providers/root-provider";
 
 export const metadata: Metadata = {
   title: "Connor Hunter | Software Engineer",
@@ -47,7 +48,9 @@ export default function RootLayout({
           href="/android-chrome-512x512.png"
         />
       </Head>
-      <body>{children}</body>
+      <body>
+        <RootProvider>{children}</RootProvider>
+      </body>
     </html>
   );
 }

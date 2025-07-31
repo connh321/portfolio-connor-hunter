@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,scss,json}\"",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
