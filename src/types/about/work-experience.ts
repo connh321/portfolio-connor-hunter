@@ -1,4 +1,4 @@
-interface WorkExperience {
+interface IWorkExperience {
   company: string;
   location: string;
   title: string;
@@ -7,4 +7,4 @@ interface WorkExperience {
   responsibilities: string[];
 }
 
-export default WorkExperience;
+export default IWorkExperience;

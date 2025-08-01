@@ -12,7 +12,12 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./header.scss";
 
-const NAV_ITEMS = ["About", "Projects", "Resume", "Contact Me"];
+const NAV_ITEMS = [
+  { label: "About", id: "about" },
+  { label: "Projects", id: "projects" },
+  { label: "Resume", id: "resume" },
+  { label: "Contact", id: "contact" },
+];
 
 const Header = () => {
   const [expanded, setExpanded] = useState(true);
@@ -28,6 +33,20 @@ const Header = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleScrollToSection = (id: string, offset = 112) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const elementPosition =
+        section.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   // Memoized button size based on screen size and expanded state
   const buttonSize = useMemo(() => {
@@ -62,13 +81,14 @@ const Header = () => {
           alignItems="center"
           className="nav-buttons"
         >
-          {NAV_ITEMS.map((label) => (
+          {NAV_ITEMS.map(({ label, id }) => (
             <Button
               key={label}
               className="animated"
               color="inherit"
               variant="text"
               size={buttonSize}
+              onClick={() => handleScrollToSection(id)}
             >
               {label}
             </Button>
@@ -81,7 +101,7 @@ const Header = () => {
         <KeyboardArrowDownIcon
           fontSize="large"
           className="arrow-icon animated"
-          onClick={() => window.scrollTo({ top: 2, behavior: "smooth" })}
+          onClick={() => handleScrollToSection(NAV_ITEMS[0].id)}
         />
       )}
     </Box>

@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
-import "./about-me.scss";
-import AboutMeClient from "../../../client/about-me-client/about-me-client";
+import { Box, Typography } from "@mui/material";
+import AboutMeClient from "../../../client/about/about-me-client/about-me-client";
 
 interface Props {
   data: string | undefined;
@@ -8,7 +7,9 @@ interface Props {
 const AboutMe = async ({ data }: Props) => {
   return (
     <Box className="about-me">
-      <h1>About Me</h1>
+      <Typography variant="h4" sx={{ fontWeight: 700 }}>
+        About Me
+      </Typography>
       <AboutMeClient data={data} />
     </Box>
   );

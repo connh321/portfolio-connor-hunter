@@ -1,6 +1,6 @@
-interface TechnicalExperience {
+interface ITechnicalExperience {
   title: string;
   chips: string[];
 }
 
-export default TechnicalExperience;
+export default ITechnicalExperience;

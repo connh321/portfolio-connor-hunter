@@ -1,5 +1,9 @@
 @use "sass/theme.scss" as theme;
-.about {
+#about {
   flex-grow: 1;
   padding: 1rem;
+}
+
+.welcome {
+  font-weight: 700;
 }

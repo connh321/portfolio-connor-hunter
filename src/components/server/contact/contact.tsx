@@ -1,9 +1,9 @@
 "use server";
 import { Box } from "@mui/material";
-import "./contact-me.scss";
-const ContactMe = () => {
+import "./contact.scss";
+const Contact = () => {
   return (
-    <Box className="contact-me">
+    <Box id="contact">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
       reprehenderit? Dolores neque distinctio possimus dignissimos impedit
       deleniti perspiciatis quo eveniet ratione consectetur eius omnis quam,
@@ -116,4 +116,4 @@ const ContactMe = () => {
   );
 };
 
-export default ContactMe;
+export default Contact;

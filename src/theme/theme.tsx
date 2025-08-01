@@ -6,7 +6,7 @@ import React from "react";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#484849",
+      main: "rgb(59, 61, 64)",
     },
     background: {
       default: "#ffffeb",

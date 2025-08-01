@@ -1,14 +1,14 @@
-import Certification from "./certification";
-import TechnicalExperience from "./technical-experience";
-import WorkExperience from "./work-experience";
+import ICertification from "./certification";
+import ITechnicalExperience from "./technical-experience";
+import IWorkExperience from "./work-experience";
 
-interface About {
+interface IAbout {
   aboutMe: string;
   education: string;
   hobbies: string;
-  workExperience: WorkExperience[];
-  certifications: Certification[];
-  technicalExperience: TechnicalExperience[];
+  workExperience: IWorkExperience[];
+  certifications: ICertification[];
+  technicalExperience: ITechnicalExperience[];
 }
 
-export default About;
+export default IAbout;

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { aboutSliceReducers } from "./reducers";
-import About from "@/src/types/about/about";
+import IAbout from "@/src/types/about/about";
 
-export const initialState: About = {
+export const initialState: IAbout = {
   aboutMe: "",
   education: "",
   hobbies: "",

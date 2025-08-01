@@ -1,6 +1,6 @@
-interface Certification {
+interface ICertification {
   name: string;
   date: string;
 }
 
-export default Certification;
+export default ICertification;

@@ -1,0 +1,10 @@
+@use "sass/theme.scss" as theme;
+
+.footer {
+  margin-top: 1rem !important;
+  background-color: theme.$color-primary-main;
+}
+
+.text {
+  color: theme.$color-background-default !important;
+}
