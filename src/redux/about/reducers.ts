@@ -22,7 +22,7 @@ export const aboutSliceReducers = {
   },
   setTechnicalExperience(
     state: IAbout,
-    action: PayloadAction<ITechnicalExperience[]>
+    action: PayloadAction<ITechnicalExperience[]>,
   ) {
     state.technicalExperience = action.payload;
   },

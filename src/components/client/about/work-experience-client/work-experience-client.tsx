@@ -29,7 +29,7 @@ const WorkExperienceClient = ({ data }: Props) => {
     console.log(
       "WorkExperienceClient useEffect triggered",
       data,
-      portfolio.workExperience
+      portfolio.workExperience,
     );
     if (
       data &&
@@ -63,7 +63,7 @@ const WorkExperienceClient = ({ data }: Props) => {
   return (
     <Box sx={{ marginY: "1rem" }}>
       {experiences.map((exp, index) => (
-        <Box key={index} sx={{ mb: '1rem' }}>
+        <Box key={index} sx={{ mb: "1rem" }}>
           <Typography variant="h6">
             {exp.title} — {exp.company}
           </Typography>

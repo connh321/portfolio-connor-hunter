@@ -21,7 +21,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     console.log(
       "TechnicalExperienceClient useEffect triggered",
       data,
-      portfolio.technicalExperience
+      portfolio.technicalExperience,
     );
     if (
       data &&
