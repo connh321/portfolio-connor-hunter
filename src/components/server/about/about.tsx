@@ -4,13 +4,15 @@ import "./about.scss";
 import AboutMe from "./about-me/about-me";
 import TechnicalExperience from "./technical-experience/technical-experience";
 import Certifications from "./certifications/certifications";
-import getAboutData from "@/src/lib/about";
 import WorkExperience from "./work-experience/work-experience";
 import Hobbies from "./hobbies/hobbies";
 import Education from "./education/education";
-const About = async () => {
-  const portfolio = await getAboutData();
+import IAbout from "@/src/types/about/about";
 
+interface Props {
+  data: IAbout | null;
+}
+const About = async ({ data }: Props) => {
   return (
     <Box id="about">
       <Stack direction="column" spacing={2}>
@@ -23,13 +25,13 @@ const About = async () => {
         >
           Welcome!
         </Typography>
-        <AboutMe data={portfolio?.aboutMe}></AboutMe>
-        <Education data={portfolio?.education}></Education>
-        <Hobbies data={portfolio?.hobbies}></Hobbies>
-        <WorkExperience data={portfolio?.workExperience}></WorkExperience>
-        <Certifications data={portfolio?.certifications}></Certifications>
+        <AboutMe data={data?.aboutMe}></AboutMe>
+        <Education data={data?.education}></Education>
+        <Hobbies data={data?.hobbies}></Hobbies>
+        <WorkExperience data={data?.workExperience}></WorkExperience>
+        <Certifications data={data?.certifications}></Certifications>
         <TechnicalExperience
-          data={portfolio?.technicalExperience}
+          data={data?.technicalExperience}
         ></TechnicalExperience>
       </Stack>
     </Box>
