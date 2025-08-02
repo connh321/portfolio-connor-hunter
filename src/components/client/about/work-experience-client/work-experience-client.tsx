@@ -26,16 +26,10 @@ const WorkExperienceClient = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(
-      "WorkExperienceClient useEffect triggered",
-      data,
-      portfolio.workExperience
-    );
     if (
       data &&
       (!portfolio.workExperience || portfolio.workExperience.length === 0)
     ) {
-      console.log("Dispatching setWorkExperience with data:", data);
       dispatch(setWorkExperience(data));
     }
     setLoading(false);
@@ -43,7 +37,6 @@ const WorkExperienceClient = ({ data }: Props) => {
 
   if (loading) {
     const skeletonCount = 2;
-    console.log("Loading skeletons for work experience:", skeletonCount);
     return Array.from(Array(skeletonCount)).map((_, index) => (
       <Box sx={{ width: "100%", marginY: "1rem" }} key={index}>
         <Skeleton variant="text" width="30%" height={37} />

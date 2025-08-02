@@ -18,17 +18,11 @@ const TechnicalExperienceClient = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(
-      "TechnicalExperienceClient useEffect triggered",
-      data,
-      portfolio.technicalExperience
-    );
     if (
       data &&
       (!portfolio.technicalExperience ||
         portfolio.technicalExperience.length === 0)
     ) {
-      console.log("Dispatching setTechnicalExperience with data:", data);
       dispatch(setTechnicalExperience(data));
     }
     setLoading(false);
@@ -40,12 +34,12 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
         {Array.from({ length: sectionCount }).map((_, sectionIdx) => {
-          const chipsInThisSection = Math.floor(Math.random() * 15) + 6; // 6 - 20 inclusive
+          const chipsInThisSection = 12;
           return (
             <Box key={sectionIdx} sx={{ mb: 3 }}>
               <Skeleton
                 variant="rectangular"
-                width={`${30 + Math.random() * 30}%`} // Vary section title width
+                width="30%"
                 height={"28px"}
                 sx={{ mb: ".5rem" }}
               />
@@ -55,8 +49,8 @@ const TechnicalExperienceClient = ({ data }: Props) => {
                     <Skeleton
                       key={chipIdx}
                       variant="rounded"
-                      width={`${60 + Math.random() * 40}px`} // 60–100px wide chips
                       height={"32px"}
+                      width="60px"
                       sx={{ borderRadius: "16px" }}
                     />
                   )
