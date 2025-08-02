@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Connor Hunter Portfolio
+
+A modern, responsive portfolio site built with React, Next.js, AWS, and Material UI. This site showcases Connor Hunter's projects, experience, certifications, and skills with dynamic rendering and optimized static hosting on AWS. It is designed with scalability, accessibility, and performance in mind.
+
+## Features
+
+- 💡 Information about Connor Hunter.
+- 📱 Mobile-first responsive layout
+- ⚙️ AWS Amplify Hosting
+- 🌐 Custom domain with HTTPS via Route 53 and ACM
+- 🎨 Material UI theme support with modern design
+- 🖼️ Static storage and access via S3
+- 🧩 Modular and maintainable project structure
+
+## Tech Stack
+
+- **Frontend:**
+  - Next.js 15 (App Router)
+  - React 19
+  - TypeScript
+  - Material UI
+  - Redux Toolkit
+
+- **Backend & Infra:**
+  - AWS Amplify for hosting and deployments
+  - S3 for static and dynamic asset storage
+  - CloudFront for CDN caching and delivery
+  - Route 53 for DNS and custom domain
+  - ACM for SSL/TLS certificates
+
+- **CI/CD:**
+  - AWS Amplify Connection to GitHub
 
 ## Getting Started
 
-First, run the development server:
+### Development Prerequisites
+
+- Node.js (Latest LTS version)
+- GitHub account
+- AWS account and connection to Amplify.
+- Environment variable values to fetch data
+- S3 bucket with data.
+
+### Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/connh321/portfolio-connor-hunter.git
+cd portfolio-connor-hunter
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. For production build and preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+portfolio-connor-hunter/
+├── public/ # Static assets like resume PDFs, favicons
+├── src/
+│ ├── app/ # Next.js App Router pages and layouts
+│ ├── components/ # Reusable UI components
+│ ├── redux/ # Redux slices and store config
+│ ├── types/ # TypeScript interfaces
+│ └── utils/ # Utility functions and constants
+└── .github/ # GitHub Actions workflows
 
-To learn more about Next.js, take a look at the following resources:
+## Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- npm run dev - Start development server
+- npm run build - Build production bundle
+- npm run lint - Run ESLint
+- npm run format - Format code
+- npm test - Run tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+The application can be deployed using AWS Amplify.
+First push your changes to GitHub and Amplify should automatically pick up the changes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Git Hooks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project uses Husky for Git hooks to ensure code quality:
+
+### Pre-commit
+
+- Runs ESLint
+- Runs Prettier formatting
+
+### Pre-push
+
+- Runs ESLint
+- Runs Prettier formatting
+
+To skip hooks temporarily while committing/ pushing (not recommended), use:
+
+```bash
+--no-verify
+```
+
+Note: Hooks can be found in the .husky directory
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+Connor Hunter - [@connh321](https://github.com/connh321)

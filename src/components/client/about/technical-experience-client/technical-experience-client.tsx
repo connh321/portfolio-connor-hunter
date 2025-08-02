@@ -1,3 +1,11 @@
+/**
+ * Client-side component for rendering the technical experience section.
+ *
+ * This component uses Redux to fetch and store the technical experience data.
+ *
+ * @module TechnicalExperienceClient
+ * @see setTechnicalExperience
+ */
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -8,15 +16,34 @@ import { TECHNICAL_EXPERIENCE_FETCH_ERROR } from "@/src/errors/about";
 import ITechnicalExperience from "@/src/types/about/technical-experience";
 import { setTechnicalExperience } from "@/src/redux/about/actions";
 
+/**
+ * Props for the TechnicalExperienceClient component.
+ *
+ * @property {ITechnicalExperience[] | undefined} data - The technical experience data to render.
+ */
 interface Props {
   data: ITechnicalExperience[] | undefined;
 }
 
+/**
+ * Client-side component for rendering the technical experience section.
+ *
+ * This component uses Redux to fetch and store the technical experience data.
+ *
+ * @param {Props} props - The component props.
+ */
 const TechnicalExperienceClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Effect hook to fetch and store the technical experience data.
+   *
+   * If the data is already fetched, it sets the loading state to false.
+   *
+   * @see setTechnicalExperience
+   */
   useEffect(() => {
     if (
       data &&
@@ -27,6 +54,9 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     setLoading(false);
   }, [data, about.technicalExperience, dispatch]);
 
+  /**
+   * Show loading skeleton if loading.
+   */
   if (loading) {
     const sectionCount = 4;
 
@@ -62,6 +92,9 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     );
   }
 
+  /**
+   * Show error if any.
+   */
   if (!data) {
     return (
       <Box sx={{ marginY: "1rem" }}>
@@ -70,7 +103,12 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     );
   }
 
-  const sections = about.technicalExperience ?? data;
+  /**
+   * Get the technical experience data to render.
+   *
+   * @type {ITechnicalExperience[]}
+   */
+  const sections: ITechnicalExperience[] = about.technicalExperience;
 
   return (
     <Box sx={{ marginY: "1rem" }}>

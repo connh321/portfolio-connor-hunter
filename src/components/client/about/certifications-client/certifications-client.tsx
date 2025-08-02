@@ -1,3 +1,11 @@
+/**
+ * Client-side component for rendering the certifications section.
+ *
+ * This component uses Redux to fetch and store the certifications data.
+ *
+ * @module CertificationsClient
+ * @see setCertifications
+ */
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -15,10 +23,22 @@ import { CERTIFICATIONS_FETCH_ERROR } from "@/src/errors/about";
 import ICertification from "@/src/types/about/certification";
 import { setCertifications } from "@/src/redux/about/actions";
 
+/**
+ * Props for the CertificationsClient component.
+ *
+ * @property {ICertification[] | undefined} data - The certifications data to render.
+ */
 interface Props {
   data: ICertification[] | undefined;
 }
 
+/**
+ * Client-side component for rendering the certifications section.
+ *
+ * This component uses Redux to fetch and store the certifications data.
+ *
+ * @param {Props} props - The component props.
+ */
 const CertificationsClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
@@ -31,7 +51,9 @@ const CertificationsClient = ({ data }: Props) => {
     setLoading(false);
   }, [data, about.certifications, dispatch]);
 
-  // Show loading skeleton if loading
+  /**
+   * Show loading skeleton if loading.
+   */
   if (loading) {
     return (
       <Box sx={{ width: "100%", marginY: "1rem", pl: 2 }}>
@@ -41,7 +63,9 @@ const CertificationsClient = ({ data }: Props) => {
     );
   }
 
-  // Show error if any
+  /**
+   * Show error if any.
+   */
   if (!data) {
     return (
       <Box sx={{ marginY: "1rem" }}>
