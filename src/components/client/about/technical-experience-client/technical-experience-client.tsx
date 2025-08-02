@@ -53,7 +53,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
                       width="60px"
                       sx={{ borderRadius: "16px" }}
                     />
-                  )
+                  ),
                 )}
               </Stack>
             </Box>

@@ -4,7 +4,7 @@ const getAboutData = async (): Promise<IAbout | null> => {
     const url = process.env.NEXT_PUBLIC_S3_ABOUT_URL;
     if (!url) {
       throw new Error(
-        "NEXT_PUBLIC_S3_ABOUT_URL environment variable is not set"
+        "NEXT_PUBLIC_S3_ABOUT_URL environment variable is not set",
       );
     }
     console.log("Fetching about data from:", url);
