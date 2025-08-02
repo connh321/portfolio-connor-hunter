@@ -28,7 +28,7 @@ const AboutMeClient = ({ data }: Props) => {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
         <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+        <Skeleton variant="text" width="85%" height={22} />
       </Box>
     );
   }

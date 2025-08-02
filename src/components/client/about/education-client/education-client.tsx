@@ -28,7 +28,7 @@ const EducationClient = ({ data }: Props) => {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
         <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+        <Skeleton variant="text" width="20%" height={22} />
       </Box>
     );
   }

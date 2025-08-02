@@ -27,8 +27,7 @@ const HobbiesClient = ({ data }: Props) => {
   if (loading) {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
-        <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+        <Skeleton variant="text" width="95%" height={50} />
       </Box>
     );
   }

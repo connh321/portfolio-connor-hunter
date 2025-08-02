@@ -21,7 +21,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     console.log(
       "TechnicalExperienceClient useEffect triggered",
       data,
-      portfolio.technicalExperience,
+      portfolio.technicalExperience
     );
     if (
       data &&
@@ -35,10 +35,36 @@ const TechnicalExperienceClient = ({ data }: Props) => {
   }, [data, portfolio.technicalExperience, dispatch]);
 
   if (loading) {
+    const sectionCount = 4;
+
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
-        <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+        {Array.from({ length: sectionCount }).map((_, sectionIdx) => {
+          const chipsInThisSection = Math.floor(Math.random() * 15) + 6; // 6 - 20 inclusive
+          return (
+            <Box key={sectionIdx} sx={{ mb: 3 }}>
+              <Skeleton
+                variant="rectangular"
+                width={`${30 + Math.random() * 30}%`} // Vary section title width
+                height={"28px"}
+                sx={{ mb: ".5rem" }}
+              />
+              <Stack direction="row" flexWrap="wrap" gap={"1rem"}>
+                {Array.from({ length: chipsInThisSection }).map(
+                  (__, chipIdx) => (
+                    <Skeleton
+                      key={chipIdx}
+                      variant="rounded"
+                      width={`${60 + Math.random() * 40}px`} // 60–100px wide chips
+                      height={"32px"}
+                      sx={{ borderRadius: "16px" }}
+                    />
+                  )
+                )}
+              </Stack>
+            </Box>
+          );
+        })}
       </Box>
     );
   }
