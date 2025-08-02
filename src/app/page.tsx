@@ -6,7 +6,7 @@ import "./page.scss";
 import Footer from "../components/server/footer/footer";
 import Resume from "../components/server/resume/resume";
 import Projects from "../components/server/projects/projects";
-// import Contact from "../components/server/contact/contact";
+import Contact from "../components/server/contact/contact";
 
 export default async function Page() {
   return (
@@ -16,7 +16,7 @@ export default async function Page() {
         <About />
         <Projects />
         <Resume />
-        {/* <Contact /> */}
+        <Contact />
       </Stack>
       <Footer />
     </Box>

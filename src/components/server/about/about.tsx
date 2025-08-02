@@ -19,8 +19,6 @@ const About = async () => {
           sx={{
             fontWeight: 700,
             mb: "1rem !important",
-            display: "flex",
-            justifyContent: "center",
           }}
         >
           Welcome!
