@@ -25,7 +25,10 @@ const About = async ({ data }: Props) => {
         >
           Welcome!
         </Typography>
-        <AboutMe data={data?.aboutMe}></AboutMe>
+        <AboutMe
+          data={data?.aboutMe}
+          aboutMeShort={data?.aboutMeShort}
+        ></AboutMe>
         <Education data={data?.education}></Education>
         <Hobbies data={data?.hobbies}></Hobbies>
         <WorkExperience data={data?.workExperience}></WorkExperience>

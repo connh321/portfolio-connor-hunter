@@ -4,6 +4,7 @@ import IAbout from "@/src/types/about/about";
 
 export const initialState: IAbout = {
   aboutMe: "",
+  aboutMeShort: "",
   education: "",
   hobbies: "",
   workExperience: [],
