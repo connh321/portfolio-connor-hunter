@@ -26,10 +26,7 @@ const WorkExperienceClient = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (
-      data &&
-      (!about.workExperience || about.workExperience.length === 0)
-    ) {
+    if (data && (!about.workExperience || about.workExperience.length === 0)) {
       dispatch(setWorkExperience(data));
     }
     setLoading(false);

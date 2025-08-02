@@ -20,8 +20,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
   useEffect(() => {
     if (
       data &&
-      (!about.technicalExperience ||
-        about.technicalExperience.length === 0)
+      (!about.technicalExperience || about.technicalExperience.length === 0)
     ) {
       dispatch(setTechnicalExperience(data));
     }
@@ -53,7 +52,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
                       width="60px"
                       sx={{ borderRadius: "16px" }}
                     />
-                  )
+                  ),
                 )}
               </Stack>
             </Box>

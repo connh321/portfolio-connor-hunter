@@ -30,7 +30,7 @@ interface Props {
 const ProjectsClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const projects: IProject[] = useSelector(
-    (state: RootState) => state.projects
+    (state: RootState) => state.projects,
   );
 
   const [loading, setLoading] = useState(true);

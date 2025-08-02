@@ -25,10 +25,7 @@ const CertificationsClient = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (
-      data &&
-      (!about.certifications || about.certifications.length === 0)
-    ) {
+    if (data && (!about.certifications || about.certifications.length === 0)) {
       dispatch(setCertifications(data));
     }
     setLoading(false);
