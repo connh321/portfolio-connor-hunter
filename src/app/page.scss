@@ -1,0 +1,14 @@
+@use "sass/theme.scss" as theme;
+
+.home {
+  background-color: theme.$color-background-default;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  margin: 150px auto 0;
+  width: 80%;
+}

@@ -1,0 +1,82 @@
+"use client";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { AppDispatch, RootState } from "@/src/redux/store";
+import { setCertifications } from "@/src/redux/about/actions";
+import {
+  Skeleton,
+  Box,
+  Alert,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
+import IAbout from "@/src/types/about/about";
+import { CERTIFICATIONS_FETCH_ERROR } from "@/src/errors/about";
+import ICertification from "@/src/types/about/certification";
+
+interface Props {
+  data: ICertification[] | undefined;
+}
+
+const CertificationsClient = ({ data }: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (
+      data &&
+      (!portfolio.certifications || portfolio.certifications.length === 0)
+    ) {
+      dispatch(setCertifications(data));
+    }
+    setLoading(false);
+  }, [data, portfolio.certifications, dispatch]);
+
+  // Show loading skeleton if loading
+  if (loading) {
+    return (
+      <Box sx={{ width: "100%", marginY: "1rem" }}>
+        <Skeleton variant="text" width="100%" height={50} />
+        <Skeleton variant="text" width="80%" height={22} />
+      </Box>
+    );
+  }
+
+  // Show error if any
+  if (!data) {
+    return (
+      <Box sx={{ marginY: "1rem" }}>
+        <Alert severity="error">{CERTIFICATIONS_FETCH_ERROR}</Alert>
+      </Box>
+    );
+  }
+
+  const certifications = portfolio.certifications ?? data;
+
+  return (
+    <Box>
+      <List dense>
+        {certifications.map((cert, index) => (
+          <ListItem key={index} disableGutters>
+            <Box>
+              <Typography component="span" sx={{ pl: 2 }}>
+                • {cert.name}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                sx={{ pl: 3, display: "block" }}
+              >
+                Earned: {cert.date}
+              </Typography>
+            </Box>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+};
+
+export default CertificationsClient;
