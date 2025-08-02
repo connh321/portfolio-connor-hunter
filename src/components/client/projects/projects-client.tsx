@@ -13,6 +13,7 @@ import {
   Box,
   Skeleton,
   Alert,
+  Tooltip,
 } from "@mui/material";
 
 import IProject from "@/src/types/project/project";
@@ -134,27 +135,29 @@ const ProjectsClient = ({ data }: Props) => {
               </CardContent>
               <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {project?.websiteLink && (
+                  <Tooltip title="Visit" placement="top">
+                    <Button
+                      size="small"
+                      href={project.websiteLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<OpenInNewIcon />}
+                    >
+                      Website
+                    </Button>
+                  </Tooltip>
+                )}
+                <Tooltip title="Visit" placement="top">
                   <Button
                     size="small"
-                    href={project.websiteLink}
+                    href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    startIcon={<OpenInNewIcon />}
+                    startIcon={<GitHubIcon />}
                   >
-                    Website
+                    GitHub
                   </Button>
-                )}
-
-                <Button
-                  size="small"
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  startIcon={<GitHubIcon />}
-                >
-                  {" "}
-                  GitHub
-                </Button>
+                </Tooltip>
               </CardActions>
             </Card>
           </Grid>

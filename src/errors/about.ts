@@ -8,3 +8,4 @@ export const CERTIFICATIONS_FETCH_ERROR =
 export const TECHNICAL_EXPERIENCE_FETCH_ERROR =
   "Failed to fetch Technical Experience data.";
 export const PROJECTS_FETCH_ERROR = "Failed to fetch Projects data.";
+export const CONTACTS_FETCH_ERROR = "Failed to fetch Contact data.";

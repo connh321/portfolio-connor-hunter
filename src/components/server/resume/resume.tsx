@@ -10,8 +10,6 @@ const Resume = () => {
         sx={{
           fontWeight: 700,
           mb: "1rem",
-          display: "flex",
-          justifyContent: "center",
         }}
       >
         Resume
