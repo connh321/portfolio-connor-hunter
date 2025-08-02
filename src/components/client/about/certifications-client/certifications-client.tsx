@@ -37,9 +37,9 @@ const CertificationsClient = ({ data }: Props) => {
   // Show loading skeleton if loading
   if (loading) {
     return (
-      <Box sx={{ width: "100%", marginY: "1rem" }}>
-        <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+      <Box sx={{ width: "100%", marginY: "1rem", pl: 2 }}>
+        <Skeleton variant="text" width="15%" height={22} />
+        <Skeleton variant="text" width="10%" height={22} />
       </Box>
     );
   }

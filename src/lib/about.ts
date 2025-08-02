@@ -1,22 +1,29 @@
 import IAbout from "../types/about/about";
-import aboutMe from "@/src/about.json";
 const getAboutData = async (): Promise<IAbout | null> => {
-  // try {
-  //   const response = await fetch(
-  //     `${process.env.NEXT_PUBLIC_BASE_URL}/about.json`,
-  //     {
-  //       next: { revalidate: 1800 }, // 30 mins
-  //     },
-  //   );
+  try {
+    const url = process.env.NEXT_PUBLIC_S3_ABOUT_URL;
+    if (!url) {
+      throw new Error(
+        "NEXT_PUBLIC_S3_ABOUT_URL environment variable is not set",
+      );
+    }
+    console.log("Fetching about data from:", url);
 
-  //   if (!response.ok) throw new Error();
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
 
-  //   return await response.json();
-  // } catch (e) {
-  //   console.error("About fetch error:", e);
-  //   return null;
-  // }
-  return aboutMe as IAbout;
+    const response = await fetch(url, {
+      headers,
+      next: { revalidate: 1800 }, // 30 mins
+    });
+
+    if (!response.ok) throw new Error(response.statusText);
+
+    return await response.json();
+  } catch (e) {
+    console.error("About fetch error:", e);
+    return null;
+  }
 };
 
 export default getAboutData;

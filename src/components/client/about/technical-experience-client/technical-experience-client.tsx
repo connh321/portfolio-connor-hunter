@@ -18,27 +18,47 @@ const TechnicalExperienceClient = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(
-      "TechnicalExperienceClient useEffect triggered",
-      data,
-      portfolio.technicalExperience,
-    );
     if (
       data &&
       (!portfolio.technicalExperience ||
         portfolio.technicalExperience.length === 0)
     ) {
-      console.log("Dispatching setTechnicalExperience with data:", data);
       dispatch(setTechnicalExperience(data));
     }
     setLoading(false);
   }, [data, portfolio.technicalExperience, dispatch]);
 
   if (loading) {
+    const sectionCount = 4;
+
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
-        <Skeleton variant="text" width="100%" height={50} />
-        <Skeleton variant="text" width="80%" height={22} />
+        {Array.from({ length: sectionCount }).map((_, sectionIdx) => {
+          const chipsInThisSection = 12;
+          return (
+            <Box key={sectionIdx} sx={{ mb: 3 }}>
+              <Skeleton
+                variant="rectangular"
+                width="30%"
+                height={"28px"}
+                sx={{ mb: ".5rem" }}
+              />
+              <Stack direction="row" flexWrap="wrap" gap={"1rem"}>
+                {Array.from({ length: chipsInThisSection }).map(
+                  (__, chipIdx) => (
+                    <Skeleton
+                      key={chipIdx}
+                      variant="rounded"
+                      height={"32px"}
+                      width="60px"
+                      sx={{ borderRadius: "16px" }}
+                    />
+                  ),
+                )}
+              </Stack>
+            </Box>
+          );
+        })}
       </Box>
     );
   }
