@@ -8,6 +8,9 @@ export const aboutSliceReducers = {
   setAboutMe(state: IAbout, action: PayloadAction<string>) {
     state.aboutMe = action.payload;
   },
+  setAboutMeShort(state: IAbout, action: PayloadAction<string>) {
+    state.aboutMeShort = action.payload;
+  },
   setEducation(state: IAbout, action: PayloadAction<string>) {
     state.education = action.payload;
   },
@@ -22,7 +25,7 @@ export const aboutSliceReducers = {
   },
   setTechnicalExperience(
     state: IAbout,
-    action: PayloadAction<ITechnicalExperience[]>,
+    action: PayloadAction<ITechnicalExperience[]>
   ) {
     state.technicalExperience = action.payload;
   },
