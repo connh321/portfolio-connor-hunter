@@ -1,4 +1,3 @@
-// src/app/resume/page.tsx
 import { Box, Typography } from "@mui/material";
 
 const Resume = () => {
