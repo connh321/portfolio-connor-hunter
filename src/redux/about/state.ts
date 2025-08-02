@@ -12,7 +12,7 @@ export const initialState: IAbout = {
 };
 
 export const aboutSlice = createSlice({
-  name: "portfolio",
+  name: "about",
   initialState,
   reducers: aboutSliceReducers,
 });

@@ -2,7 +2,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setCertifications } from "@/src/redux/about/actions";
 import {
   Skeleton,
   Box,
@@ -14,6 +13,7 @@ import {
 import IAbout from "@/src/types/about/about";
 import { CERTIFICATIONS_FETCH_ERROR } from "@/src/errors/about";
 import ICertification from "@/src/types/about/certification";
+import { setCertifications } from "@/src/redux/about/actions";
 
 interface Props {
   data: ICertification[] | undefined;
@@ -21,18 +21,15 @@ interface Props {
 
 const CertificationsClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (
-      data &&
-      (!portfolio.certifications || portfolio.certifications.length === 0)
-    ) {
+    if (data && (!about.certifications || about.certifications.length === 0)) {
       dispatch(setCertifications(data));
     }
     setLoading(false);
-  }, [data, portfolio.certifications, dispatch]);
+  }, [data, about.certifications, dispatch]);
 
   // Show loading skeleton if loading
   if (loading) {
@@ -53,7 +50,7 @@ const CertificationsClient = ({ data }: Props) => {
     );
   }
 
-  const certifications = portfolio.certifications ?? data;
+  const certifications = about.certifications ?? data;
 
   return (
     <Box>
