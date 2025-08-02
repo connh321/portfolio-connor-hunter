@@ -1,3 +1,11 @@
+/**
+ * Client-side component for rendering the hobbies section.
+ *
+ * This component uses Redux to fetch and store the hobbies data.
+ *
+ * @module HobbiesClient
+ * @see setHobbies
+ */
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -7,10 +15,22 @@ import IAbout from "@/src/types/about/about";
 import { HOBBIES_FETCH_ERROR } from "@/src/errors/about";
 import { setHobbies } from "@/src/redux/about/actions";
 
+/**
+ * Props for the HobbiesClient component.
+ *
+ * @property {string | undefined} data - The hobbies data to render.
+ */
 interface Props {
   data: string | undefined;
 }
 
+/**
+ * Client-side component for rendering the hobbies section.
+ *
+ * This component uses Redux to fetch and store the hobbies data.
+ *
+ * @param {Props} props - The component props.
+ */
 const HobbiesClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
@@ -23,7 +43,9 @@ const HobbiesClient = ({ data }: Props) => {
     setLoading(false);
   }, [data, about.hobbies, dispatch]);
 
-  // Show loading skeleton if loading
+  /**
+   * Show loading skeleton if loading.
+   */
   if (loading) {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
@@ -32,7 +54,9 @@ const HobbiesClient = ({ data }: Props) => {
     );
   }
 
-  // Show error if any
+  /**
+   * Show error if any.
+   */
   if (!data) {
     return (
       <Box sx={{ marginY: "1rem" }}>

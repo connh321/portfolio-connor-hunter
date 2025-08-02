@@ -1,3 +1,12 @@
+/**
+ * Client-side component for rendering the about me section.
+ *
+ * This component uses Redux to fetch and store the about me data.
+ *
+ * @module AboutMeClient
+ * @see setAboutMe
+ * @see setAboutMeShort
+ */
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -7,16 +16,38 @@ import IAbout from "@/src/types/about/about";
 import { ABOUT_ME_FETCH_ERROR } from "@/src/errors/about";
 import { setAboutMe, setAboutMeShort } from "@/src/redux/about/actions";
 
+/**
+ * Props for the AboutMeClient component.
+ *
+ * @property {string | undefined} data - The about me data to render.
+ * @property {string | undefined} aboutMeShort - The short version of the about me data.
+ */
 interface Props {
   data: string | undefined;
   aboutMeShort: string | undefined;
 }
 
+/**
+ * Client-side component for rendering the about me section.
+ *
+ * This component uses Redux to fetch and store the about me data.
+ *
+ * @param {Props} props - The component props.
+ * @returns {JSX.Element} The rendered component.
+ */
 const AboutMeClient = ({ data, aboutMeShort }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Effect hook to fetch and store the about me data.
+   *
+   * If the data is already fetched, it sets the loading state to false.
+   *
+   * @see setAboutMe
+   * @see setAboutMeShort
+   */
   useEffect(() => {
     if (data && !about.aboutMe) {
       dispatch(setAboutMe(data));
@@ -25,7 +56,9 @@ const AboutMeClient = ({ data, aboutMeShort }: Props) => {
     setLoading(false);
   }, [data, about.aboutMe, dispatch, aboutMeShort]);
 
-  // Show loading skeleton if loading
+  /**
+   * Show loading skeleton if loading.
+   */
   if (loading) {
     return (
       <Box sx={{ width: "100%", marginY: "1rem" }}>
@@ -35,7 +68,9 @@ const AboutMeClient = ({ data, aboutMeShort }: Props) => {
     );
   }
 
-  // Show error if any
+  /**
+   * Show error if any.
+   */
   if (!data) {
     return (
       <Box sx={{ marginY: "1rem" }}>

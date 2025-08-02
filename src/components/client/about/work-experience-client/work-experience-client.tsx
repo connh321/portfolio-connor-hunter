@@ -1,3 +1,11 @@
+/**
+ * Client-side component for rendering the work experience section.
+ *
+ * This component uses Redux to fetch and store the work experience data.
+ *
+ * @module WorkExperienceClient
+ * @see setWorkExperience
+ */
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -16,15 +24,34 @@ import { WORK_EXPERIENCE_FETCH_ERROR } from "@/src/errors/about";
 import IWorkExperience from "@/src/types/about/work-experience";
 import { setWorkExperience } from "@/src/redux/about/actions";
 
+/**
+ * Props for the WorkExperienceClient component.
+ *
+ * @property {IWorkExperience[] | undefined} data - The work experience data to render.
+ */
 interface Props {
   data: IWorkExperience[] | undefined;
 }
 
+/**
+ * Client-side component for rendering the work experience section.
+ *
+ * This component uses Redux to fetch and store the work experience data.
+ *
+ * @param {Props} props - The component props.
+ */
 const WorkExperienceClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Effect hook to fetch and store the work experience data.
+   *
+   * If the data is already fetched, it sets the loading state to false.
+   *
+   * @see setWorkExperience
+   */
   useEffect(() => {
     if (data && (!about.workExperience || about.workExperience.length === 0)) {
       dispatch(setWorkExperience(data));
@@ -32,6 +59,9 @@ const WorkExperienceClient = ({ data }: Props) => {
     setLoading(false);
   }, [data, about.workExperience, dispatch]);
 
+  /**
+   * Show loading skeleton if loading.
+   */
   if (loading) {
     const skeletonCount = 2;
     return Array.from(Array(skeletonCount)).map((_, index) => (
@@ -45,6 +75,9 @@ const WorkExperienceClient = ({ data }: Props) => {
     ));
   }
 
+  /**
+   * Show error if any.
+   */
   if (!data) {
     return (
       <Box sx={{ marginY: "1rem" }}>
@@ -53,7 +86,12 @@ const WorkExperienceClient = ({ data }: Props) => {
     );
   }
 
-  const experiences: IWorkExperience[] = about.workExperience ?? data;
+  /**
+   * Get the work experience data to render.
+   *
+   * @type {IWorkExperience[]}
+   */
+  const experiences: IWorkExperience[] = about.workExperience;
 
   return (
     <Box sx={{ marginY: "1rem" }}>

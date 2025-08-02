@@ -1,3 +1,10 @@
+/**
+ * Client-side component for the header.
+ *
+ * This component uses React hooks to handle scrolling and resizing.
+ *
+ * @module Header
+ */
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -12,6 +19,12 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./header.scss";
 
+/**
+ * Navigation items for the header.
+ *
+ * @property {string} label - The label of the navigation item.
+ * @property {string} id - The ID of the navigation item.
+ */
 const NAV_ITEMS = [
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
@@ -19,12 +32,22 @@ const NAV_ITEMS = [
   { label: "Contact", id: "contact" },
 ];
 
+/**
+ * Header component.
+ *
+ * This component renders the header with navigation buttons and a down arrow icon.
+ *
+ */
 const Header = () => {
   const [expanded, setExpanded] = useState(true);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Scroll handler to toggle expanded state
+  /**
+   * Effect hook to handle scrolling and toggle the expanded state.
+   *
+   * This hook adds an event listener to the window's scroll event and updates the expanded state accordingly.
+   */
   useEffect(() => {
     const handleScroll = () => setExpanded(window.scrollY <= 1);
 
@@ -34,6 +57,14 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /**
+   * Handle scrolling to a section.
+   *
+   * This function scrolls to a section with the given ID and offset.
+   *
+   * @param {string} id - The ID of the section to scroll to.
+   * @param {number} [offset=112] - The offset to scroll to.
+   */
   const handleScrollToSection = (id: string, offset = 112) => {
     const section = document.getElementById(id);
     if (section) {
@@ -54,6 +85,9 @@ const Header = () => {
     return expanded ? "large" : "medium";
   }, [isMobile, expanded]);
 
+  /**
+   * Header component JSX.
+   */
   return (
     <Box
       component="header"

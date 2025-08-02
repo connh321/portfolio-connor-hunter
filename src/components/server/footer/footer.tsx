@@ -1,6 +1,20 @@
+/**
+ * Server-side component for the Footer section.
+ *
+ * This component renders the footer with a copyright notice.
+ *
+ * @module Footer
+ */
 "use server";
 import { Box, Typography } from "@mui/material";
 import "./footer.scss";
+
+/**
+ * Footer component.
+ *
+ * This component renders the footer with a copyright notice.
+ *
+ */
 const Footer = () => {
   return (
     <Box

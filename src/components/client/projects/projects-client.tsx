@@ -1,3 +1,10 @@
+/**
+ * Client-side component for projects.
+ *
+ * This component displays a list of projects with their details and links to their websites and GitHub repositories.
+ *
+ * @module ProjectsClient
+ */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -24,10 +31,22 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { PROJECTS_FETCH_ERROR } from "@/src/errors/about";
 
+/**
+ * Props for the ProjectsClient component.
+ *
+ * @property {IProject[]} data - The list of projects to display.
+ */
 interface Props {
   data: IProject[];
 }
 
+/**
+ * ProjectsClient component.
+ *
+ * This component displays a list of projects with their details and links to their websites and GitHub repositories.
+ *
+ * @param {Props} props - The props for the component.
+ */
 const ProjectsClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const projects: IProject[] = useSelector(
@@ -36,6 +55,11 @@ const ProjectsClient = ({ data }: Props) => {
 
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Effect hook to update the Redux store with the project data.
+   *
+   * This hook is called when the component mounts and updates the Redux store with the project data.
+   */
   useEffect(() => {
     if (data.length !== 0) {
       dispatch(setProjects(data));
@@ -45,6 +69,11 @@ const ProjectsClient = ({ data }: Props) => {
 
   const skeletonArray = Array.from({ length: 6 });
 
+  /**
+   * Render the loading state.
+   *
+   * This function returns the loading state of the component, which displays a grid of skeleton elements.
+   */
   if (loading) {
     return (
       <Box sx={{ mt: 2 }}>
@@ -86,6 +115,11 @@ const ProjectsClient = ({ data }: Props) => {
     );
   }
 
+  /**
+   * Render the error state.
+   *
+   * This function returns the error state of the component, which displays an error message.
+   */
   if (data.length === 0) {
     return (
       <Box sx={{ marginY: "1rem" }}>
@@ -93,7 +127,12 @@ const ProjectsClient = ({ data }: Props) => {
       </Box>
     );
   }
-
+  /**
+   * Render the project list.
+   *
+   * This function returns the project list, which displays a list of projects with their details and links to their websites and GitHub repositories.
+   *
+   **/
   return (
     <Box>
       <Grid
