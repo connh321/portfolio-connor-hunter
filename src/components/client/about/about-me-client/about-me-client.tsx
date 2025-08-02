@@ -5,13 +5,14 @@ import { AppDispatch, RootState } from "@/src/redux/store";
 import { Skeleton, Typography, Box, Alert } from "@mui/material";
 import IAbout from "@/src/types/about/about";
 import { ABOUT_ME_FETCH_ERROR } from "@/src/errors/about";
-import { setAboutMe } from "@/src/redux/about/actions";
+import { setAboutMe, setAboutMeShort } from "@/src/redux/about/actions";
 
 interface Props {
   data: string | undefined;
+  aboutMeShort: string | undefined;
 }
 
-const AboutMeClient = ({ data }: Props) => {
+const AboutMeClient = ({ data, aboutMeShort }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
@@ -19,9 +20,10 @@ const AboutMeClient = ({ data }: Props) => {
   useEffect(() => {
     if (data && !about.aboutMe) {
       dispatch(setAboutMe(data));
+      dispatch(setAboutMeShort(aboutMeShort ?? ""));
     }
     setLoading(false);
-  }, [data, about.aboutMe, dispatch]);
+  }, [data, about.aboutMe, dispatch, aboutMeShort]);
 
   // Show loading skeleton if loading
   if (loading) {
