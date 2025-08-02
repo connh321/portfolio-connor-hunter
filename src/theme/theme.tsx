@@ -10,6 +10,7 @@ const theme = createTheme({
     },
     background: {
       default: "#ffffeb",
+      paper: "#ffffff", // This is your warm white for cards
     },
   },
 });

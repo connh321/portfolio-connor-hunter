@@ -2,10 +2,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setEducation } from "@/src/redux/about/actions";
 import { Skeleton, Typography, Box, Alert } from "@mui/material";
 import IAbout from "@/src/types/about/about";
 import { EDUCATION_FETCH_ERROR } from "@/src/errors/about";
+import { setEducation } from "@/src/redux/about/actions";
 
 interface Props {
   data: string | undefined;
@@ -13,15 +13,15 @@ interface Props {
 
 const EducationClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data && !portfolio.education) {
+    if (data && !about.education) {
       dispatch(setEducation(data));
     }
     setLoading(false);
-  }, [data, portfolio.education, dispatch]);
+  }, [data, about.education, dispatch]);
 
   // Show loading skeleton if loading
   if (loading) {
@@ -45,7 +45,7 @@ const EducationClient = ({ data }: Props) => {
   return (
     <Box>
       <Typography variant="body1" sx={{ marginY: "1rem" }}>
-        {portfolio.education}
+        {about.education}
       </Typography>
     </Box>
   );

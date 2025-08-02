@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { aboutSlice } from "./about/state";
+import { projectsSlice } from "./projects/state";
+
 export const store = configureStore({
   reducer: {
-    portfolio: aboutSlice.reducer,
+    about: aboutSlice.reducer,
+    projects: projectsSlice.reducer,
   },
 });
 

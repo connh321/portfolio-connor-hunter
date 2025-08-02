@@ -2,7 +2,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setWorkExperience } from "@/src/redux/about/actions";
 import {
   Skeleton,
   Typography,
@@ -15,6 +14,7 @@ import {
 import IAbout from "@/src/types/about/about";
 import { WORK_EXPERIENCE_FETCH_ERROR } from "@/src/errors/about";
 import IWorkExperience from "@/src/types/about/work-experience";
+import { setWorkExperience } from "@/src/redux/about/actions";
 
 interface Props {
   data: IWorkExperience[] | undefined;
@@ -22,18 +22,18 @@ interface Props {
 
 const WorkExperienceClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (
       data &&
-      (!portfolio.workExperience || portfolio.workExperience.length === 0)
+      (!about.workExperience || about.workExperience.length === 0)
     ) {
       dispatch(setWorkExperience(data));
     }
     setLoading(false);
-  }, [data, portfolio.workExperience, dispatch]);
+  }, [data, about.workExperience, dispatch]);
 
   if (loading) {
     const skeletonCount = 2;
@@ -56,7 +56,7 @@ const WorkExperienceClient = ({ data }: Props) => {
     );
   }
 
-  const experiences: IWorkExperience[] = portfolio.workExperience ?? data;
+  const experiences: IWorkExperience[] = about.workExperience ?? data;
 
   return (
     <Box sx={{ marginY: "1rem" }}>

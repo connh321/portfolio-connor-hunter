@@ -2,10 +2,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setHobbies } from "@/src/redux/about/actions";
 import { Skeleton, Typography, Box, Alert } from "@mui/material";
 import IAbout from "@/src/types/about/about";
 import { HOBBIES_FETCH_ERROR } from "@/src/errors/about";
+import { setHobbies } from "@/src/redux/about/actions";
 
 interface Props {
   data: string | undefined;
@@ -13,15 +13,15 @@ interface Props {
 
 const HobbiesClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data && !portfolio.hobbies) {
+    if (data && !about.hobbies) {
       dispatch(setHobbies(data));
     }
     setLoading(false);
-  }, [data, portfolio.hobbies, dispatch]);
+  }, [data, about.hobbies, dispatch]);
 
   // Show loading skeleton if loading
   if (loading) {
@@ -43,7 +43,7 @@ const HobbiesClient = ({ data }: Props) => {
 
   return (
     <Box sx={{ marginY: "1rem" }}>
-      <Typography variant="body1">{portfolio.hobbies}</Typography>
+      <Typography variant="body1">{about.hobbies}</Typography>
     </Box>
   );
 };

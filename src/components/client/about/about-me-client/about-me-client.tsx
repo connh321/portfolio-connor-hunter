@@ -2,10 +2,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setAboutMe } from "@/src/redux/about/actions";
 import { Skeleton, Typography, Box, Alert } from "@mui/material";
 import IAbout from "@/src/types/about/about";
 import { ABOUT_ME_FETCH_ERROR } from "@/src/errors/about";
+import { setAboutMe } from "@/src/redux/about/actions";
 
 interface Props {
   data: string | undefined;
@@ -13,15 +13,15 @@ interface Props {
 
 const AboutMeClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data && !portfolio.aboutMe) {
+    if (data && !about.aboutMe) {
       dispatch(setAboutMe(data));
     }
     setLoading(false);
-  }, [data, portfolio.aboutMe, dispatch]);
+  }, [data, about.aboutMe, dispatch]);
 
   // Show loading skeleton if loading
   if (loading) {
@@ -45,7 +45,7 @@ const AboutMeClient = ({ data }: Props) => {
   return (
     <Box>
       <Typography sx={{ marginY: "1rem" }} variant="body1">
-        {portfolio.aboutMe}
+        {about.aboutMe}
       </Typography>
     </Box>
   );

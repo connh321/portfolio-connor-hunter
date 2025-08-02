@@ -2,11 +2,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "@/src/redux/store";
-import { setTechnicalExperience } from "@/src/redux/about/actions";
 import { Skeleton, Typography, Box, Alert, Stack, Chip } from "@mui/material";
 import IAbout from "@/src/types/about/about";
 import { TECHNICAL_EXPERIENCE_FETCH_ERROR } from "@/src/errors/about";
 import ITechnicalExperience from "@/src/types/about/technical-experience";
+import { setTechnicalExperience } from "@/src/redux/about/actions";
 
 interface Props {
   data: ITechnicalExperience[] | undefined;
@@ -14,19 +14,19 @@ interface Props {
 
 const TechnicalExperienceClient = ({ data }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const portfolio: IAbout = useSelector((state: RootState) => state.portfolio);
+  const about: IAbout = useSelector((state: RootState) => state.about);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (
       data &&
-      (!portfolio.technicalExperience ||
-        portfolio.technicalExperience.length === 0)
+      (!about.technicalExperience ||
+        about.technicalExperience.length === 0)
     ) {
       dispatch(setTechnicalExperience(data));
     }
     setLoading(false);
-  }, [data, portfolio.technicalExperience, dispatch]);
+  }, [data, about.technicalExperience, dispatch]);
 
   if (loading) {
     const sectionCount = 4;
@@ -53,7 +53,7 @@ const TechnicalExperienceClient = ({ data }: Props) => {
                       width="60px"
                       sx={{ borderRadius: "16px" }}
                     />
-                  ),
+                  )
                 )}
               </Stack>
             </Box>
@@ -71,18 +71,30 @@ const TechnicalExperienceClient = ({ data }: Props) => {
     );
   }
 
-  const sections = portfolio.technicalExperience ?? data;
+  const sections = about.technicalExperience ?? data;
 
   return (
     <Box sx={{ marginY: "1rem" }}>
       {sections.map((section, idx) => (
         <Box key={idx} sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
-            {section.title}
+          <Typography variant="subtitle1" sx={{ mb: 1 }}>
+            {section.title}:
           </Typography>
           <Stack direction="row" flexWrap="wrap" gap={"1rem"}>
             {section.chips.map((chip, i) => (
-              <Chip key={i} label={chip} color="primary" variant="outlined" />
+              <Chip
+                key={i}
+                label={chip}
+                color="primary"
+                variant="outlined"
+                sx={{
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: (theme) => theme.palette.primary.main,
+                    color: (theme) => theme.palette.background.default,
+                  },
+                }}
+              />
             ))}
           </Stack>
         </Box>
