@@ -37,20 +37,26 @@ async function getCachedAboutData() {
   return cachedAboutData;
 }
 
-/**
- * Generates metadata for the page.
- *
- * This function fetches the about data and uses it to generate the page title and description.
- *
- * @async
- * @returns {Promise<Metadata>} The generated metadata.
- */
 export async function generateMetadata(): Promise<Metadata> {
   const aboutData = await getCachedAboutData();
+  const description = aboutData?.aboutMeShort ?? "";
 
   return {
     title: "About Me - Connor Hunter",
-    description: aboutData?.aboutMeShort ?? "",
+    description,
+    openGraph: {
+      title: "About Me - Connor Hunter",
+      description,
+      url: "https://connorhunter.net",
+      siteName: "Connor Hunter Portfolio",
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: "About Me - Connor Hunter",
+      description,
+    },
   };
 }
 
