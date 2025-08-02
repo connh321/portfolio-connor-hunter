@@ -16,7 +16,12 @@ const About = async () => {
       <Stack direction="column" spacing={2}>
         <Typography
           variant="h4"
-          sx={{ fontWeight: 700, mb: "1rem !important" }}
+          sx={{
+            fontWeight: 700,
+            mb: "1rem !important",
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
           Welcome!
         </Typography>
