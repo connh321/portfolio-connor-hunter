@@ -4,6 +4,7 @@ import IWorkExperience from "./work-experience";
 
 interface IAbout {
   aboutMe: string;
+  aboutMeShort: string; // for metadata
   education: string;
   hobbies: string;
   workExperience: IWorkExperience[];
