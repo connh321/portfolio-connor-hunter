@@ -85,6 +85,13 @@ const Header = () => {
     return expanded ? "large" : "medium";
   }, [isMobile, expanded]);
 
+  const scrollToTop = (): void => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   /**
    * Header component JSX.
    */
@@ -100,11 +107,21 @@ const Header = () => {
       {/* Title */}
       <Typography
         component="h1"
-        fontSize={expanded ? "2.5rem" : "1.25rem"}
         className="name animated"
+        onClick={scrollToTop}
+      ></Typography>
+      <Button
+        className="name animated"
+        sx={{
+          fontSize: expanded ? "1.875rem !important" : "1rem !important",
+        }}
+        color="inherit"
+        variant="text"
+        size={buttonSize}
+        onClick={scrollToTop}
       >
         Connor Hunter
-      </Typography>
+      </Button>
 
       {/* Navigation Buttons */}
       <Box component="nav" aria-label="Main navigation" width="100%">

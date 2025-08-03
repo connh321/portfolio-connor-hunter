@@ -40,21 +40,20 @@ async function getCachedAboutData() {
 export async function generateMetadata(): Promise<Metadata> {
   const aboutData = await getCachedAboutData();
   const description = aboutData?.aboutMeShort ?? "";
-
   return {
-    title: "About Me - Connor Hunter",
+    title: "Connor Hunter's Portfolio",
     description,
     openGraph: {
-      title: "About Me - Connor Hunter",
+      title: "Connor Hunter's Portfolio",
       description,
       url: "https://connorhunter.net",
-      siteName: "Connor Hunter Portfolio",
+      siteName: "Connor Hunter's Portfolio",
       locale: "en_US",
       type: "website",
     },
     twitter: {
       card: "summary",
-      title: "About Me - Connor Hunter",
+      title: "Connor Hunter's Portfolio",
       description,
     },
   };
