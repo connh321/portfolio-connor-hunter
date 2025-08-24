@@ -1,4 +1,4 @@
-# Connor Hunter Portfolio
+# Connor Hunter Portfolio (LEGACY, please see https://github.com/connh321/connorhunter)
 
 A modern, responsive portfolio site built with React, Next.js, AWS, and Material UI. This site showcases Connor Hunter's projects, experience, certifications, and skills with dynamic rendering and optimized static hosting on AWS. It is designed with scalability, accessibility, and performance in mind.
 
